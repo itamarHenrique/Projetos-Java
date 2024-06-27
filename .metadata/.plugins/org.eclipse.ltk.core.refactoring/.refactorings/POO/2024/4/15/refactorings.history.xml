@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;exceções.NumeroInvalido&apos; to &apos;NumeroInvalidoException&apos;&#x0A;- Original project: &apos;POO&apos;&#x0A;- Original element: &apos;exceções.NumeroInvalido&apos;&#x0A;- Renamed element: &apos;exceções.NumeroInvalidoException&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;NumeroInvalido&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;exceções{NumeroInvalido.java[NumeroInvalido" matchStrategy="1" name="NumeroInvalidoException" qualified="false" references="true" similarDeclarations="false" stamp="1712967409053" textual="false" version="1.0"/>
+</session>

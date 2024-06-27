@@ -1,0 +1,5 @@
+INDEX VERSION 1.134+/home/itamarhenrique/Documentos/Projetos Java/.metadata/.plugins/org.eclipse.jdt.core
+606814479.index
+1865797976.index
+1696033398.index
+2949097923.index

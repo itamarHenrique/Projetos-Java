@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;enums.categoriaEnum&apos; to &apos;Categoria&apos;&#x0A;- Original project: &apos;POO-Java&apos;&#x0A;- Original element: &apos;enums.categoriaEnum&apos;&#x0A;- Renamed element: &apos;enums.Categoria&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;categoriaEnum&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;enums{categoriaEnum.java[categoriaEnum" matchStrategy="1" name="Categoria" qualified="false" references="true" similarDeclarations="false" stamp="1712356004286" textual="false" version="1.0"/>
+</session>
