@@ -36,11 +36,9 @@ public class AlunoController {
     @GetMapping("/{matricula}")
     public Aluno obterAlunoPelaMatricula(@PathVariable int matricula){
 
-        Aluno alunoObtido;
-
         for (Aluno aluno : listaAlunos) {
             if(aluno.getMatricula() == matricula){
-                return alunoObtido = aluno;
+                return aluno;
             }
         }
 
