@@ -1,6 +1,7 @@
 package br.com.acampamento.exemplo1Acampamento.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,6 +44,22 @@ public class AlunoController {
         }
 
         return null;
+    }
+
+    @DeleteMapping("/{matricula}")
+    public void remover(@PathVariable int matricula){
+
+        Iterator<Aluno> iterator = listaAlunos.iterator();
+
+        while(iterator.hasNext()){
+            Aluno aluno = iterator.next();
+            
+            if(aluno.getMatricula() == matricula){
+                iterator.remove();
+                break;
+            }
+        }
+
     }
 
 }
