@@ -1,100 +1,85 @@
 package application;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
-
 import program.Aluno;
 import program.AlunoManager;
 
 public class Main {
 
-    // private static List<Aluno> alunos = new ArrayList<>();
-
-    public static void main(String Args[]){
-
+    public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         AlunoManager alunoManager = new AlunoManager();
-
         int sentinela;
 
         do {
-
-            System.out.print("Seja bem vindo ao CRUD de aluno. Qual operação você deseja fazer?\n1 - Adicionar novo aluno.\n2 - Editar aluno já existente pelo nome dele.\n3 - Mostrar todos alunos já existentes.\n4 - Remover aluno a partir do nome.\n0 - Para sair do programa");
+            System.out.println("Seja bem-vindo ao CRUD de aluno. Qual operação você deseja fazer?");
+            System.out.println("1 - Adicionar novo aluno.");
+            System.out.println("2 - Editar aluno já existente pelo nome.");
+            System.out.println("3 - Mostrar todos alunos já existentes.");
+            System.out.println("4 - Remover aluno pelo nome.");
+            System.out.println("0 - Para sair do programa.");
+            System.out.print("Escolha: ");
             
             sentinela = teclado.nextInt();
             teclado.nextLine();
 
             switch (sentinela) {
                 case 1:
-                    
-                    adicionaAluno(null);                    
-                    
-            
-                default:
+                    adicionarAluno(teclado, alunoManager);
                     break;
+                case 2:
+                    editarAluno(teclado, alunoManager);
+                    break;
+                case 3:
+                    alunoManager.mostrarAlunos();
+                    break;
+                case 4:
+                    removerAluno(teclado, alunoManager);
+                    break;
+                case 0:
+                    System.out.println("Saindo do programa...");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
             }
-        }
+        } while (sentinela != 0);
 
+        teclado.close();
     }
 
-    public static void adicionaAluno(Scanner teclado, AlunoManager alunoManager){
-        String primeiroNome, sobrenome, registroDeAluno, unidadeDeEnsino;
+    private static void adicionarAluno(Scanner teclado, AlunoManager alunoManager) {
         System.out.print("Digite o primeiro nome do aluno: ");
-        primeiroNome = teclado.nextLine();
+        String primeiroNome = teclado.nextLine();
         System.out.print("Digite o sobrenome do aluno: ");
-        sobrenome = teclado.nextLine();
-        System.out.print("Digite o registro de aluno do aluno: ");
-        registroDeAluno = teclado.nextLine();
-        System.out.print("Digite a unidade de ensino do aluno: ");
-        unidadeDeEnsino = teclado.nextLine();
-        alunos.add(aluno);
-    }
-
-    public static void imprimirLista(){
-        for (Aluno aluno : alunos) {
-            System.out.println("O nome do aluno é: " + aluno);
-        }
-        
-        if(alunos.isEmpty()){
-            System.out.println("A lista está vazia");
-        }
-    }
-
-    public static void removeAluno(Aluno nome){
-        Iterator<Aluno> iterator = alunos.iterator();
-        while(iterator.hasNext()){
-            Aluno aluno = iterator.next();
-            if(aluno.equals(nome)){
-                iterator.remove();
-            }
-        }
-    }
-
-    public static void editarAluno(String primeiroNome, Aluno novosDados){
-        Scanner teclado = new Scanner(System.in);
-        System.out.print("Insira o nome: ");
-        String novoNome = teclado.nextLine();
-        System.out.println("Insira o sobrenome: ");
         String sobrenome = teclado.nextLine();
-        System.out.println("Digite o registro de aluno: ");
-        String registroAluno = teclado.nextLine();
-        System.out.println("Digite a unidade de ensino do aluno: ");
-        String unidade = teclado.nextLine();
-        
-        for (Aluno aluno : alunos) {
-            if(aluno.getPrimeiroNome() == primeiroNome){
-                aluno.setPrimeiroNome(novosDados.getPrimeiroNome());
-                aluno.setSobrenome(novosDados.getSobrenome());
-                aluno.setRA(novosDados.getRA());
-                aluno.setUnidadeDeEnsino(novosDados.getUnidadeDeEnsino());
-                aluno.setPrimeiroNome(novoNome);
-                aluno.setSobrenome(sobrenome);
-                aluno.setRA(registroAluno);
-                aluno.setUnidadeDeEnsino(unidade);
-            }
-        }
+        System.out.print("Digite o registro de aluno do aluno: ");
+        String registroDeAluno = teclado.nextLine();
+        System.out.print("Digite a unidade de ensino do aluno: ");
+        String unidadeDeEnsino = teclado.nextLine();
+
+        Aluno aluno = new Aluno(primeiroNome, sobrenome, registroDeAluno, unidadeDeEnsino);
+        alunoManager.adicionaAluno(aluno);
     }
 
+    private static void editarAluno(Scanner teclado, AlunoManager alunoManager) {
+        System.out.print("Digite o nome do aluno que deseja editar: ");
+        String nome = teclado.nextLine();
+
+        System.out.print("Novo primeiro nome: ");
+        String novoPrimeiroNome = teclado.nextLine();
+        System.out.print("Novo sobrenome: ");
+        String novoSobrenome = teclado.nextLine();
+        System.out.print("Novo registro de aluno: ");
+        String novoRA = teclado.nextLine();
+        System.out.print("Nova unidade de ensino: ");
+        String novaUnidade = teclado.nextLine();
+
+        alunoManager.editarAluno(nome, novoPrimeiroNome, novoSobrenome, novoRA, novaUnidade);
+    }
+
+    private static void removerAluno(Scanner teclado, AlunoManager alunoManager) {
+        System.out.print("Digite o nome do aluno que deseja remover: ");
+        String nome = teclado.nextLine();
+        alunoManager.removerAluno(nome);
+    }
 }

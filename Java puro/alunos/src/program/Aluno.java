@@ -14,6 +14,10 @@ public class Aluno {
         this.unidadeDeEnsino = unidadeDeEnsino;
     }
 
+    public Aluno(){
+        
+    }
+
     public String getPrimeiroNome() {
         return primeiroNome;
     }
@@ -48,8 +52,8 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno {primeiroNome=" + primeiroNome + ", sobrenome=" + sobrenome + ", RA=" + RA + ", unidadeDeEnsino="
-                + unidadeDeEnsino + "}";
+        return "Aluno [primeiroNome=" + primeiroNome + ", sobrenome=" + sobrenome + ", RA=" + RA + ", unidadeDeEnsino="
+                + unidadeDeEnsino + "]";
     }
 
 }

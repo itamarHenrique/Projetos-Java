@@ -3,113 +3,63 @@ package program;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 public class AlunoManager {
 
-    private static List<AlunoManager> alunos = new ArrayList<>();
+    private List<Aluno> alunos = new ArrayList<>();
 
-    private String primeiroNome;
-    private String sobrenome;
-    private String registroAluno;
-    private String unidadeDeEnsino;
-
-    public AlunoManager(){
-
-    }
-    
-    public String getPrimeiroNome() {
-        return primeiroNome;
-    }
-    public void setPrimeiroNome(String primeiroNome) {
-        this.primeiroNome = primeiroNome;
-    }
-    public String getSobrenome() {
-        return sobrenome;
-    }
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-    public String getRA() {
-        return registroAluno;
-    }
-    public void setRA(String registro) {
-        registroAluno = registro;
-    }
-    public String getUnidadeDeEnsino() {
-        return unidadeDeEnsino;
-    }
-    public void setUnidadeDeEnsino(String unidadeDeEnsino) {
-        this.unidadeDeEnsino = unidadeDeEnsino;
-    }
-
-
-    
-    public static void adicionaAluno(AlunoManager aluno){
+    public void adicionaAluno(Aluno aluno) {
         alunos.add(aluno);
+        System.out.println("Aluno adicionado com sucesso!");
     }
 
-    public static void imprimirLista(){
-        
-        if(alunos.isEmpty()){
-            System.out.println("A lista está vazia");
-        }else{
-            for (AlunoManager aluno : alunos) {
-                System.out.println("O nome do aluno é: " + aluno);
-            }
-        }
-
-    public static void removeAluno(AlunoManager nome){
-        Iterator<AlunoManager> iterator = alunos.iterator();
-        boolean alunoRemovido = false;
-        while(iterator.hasNext()){
-            AlunoManager aluno = iterator.next();
-            if(aluno.equals(nome)){
-                iterator.remove();
-                alunoRemovido = true;
-                System.out.println("Aluno removido!");
-                break;
-            }
-        }
-
-        if(!alunoRemovido){
-            System.out.println("Aluno não encontrado");
-        }
-    }
-
-    public static void editarAluno(String primeiroNome, AlunoManager novosDados){
+    public void editarAluno(String nome, String novoPrimeiroNome, String novoSobrenome, String novoRA, String novaUnidade) {
         boolean encontrado = false;
 
-        Scanner teclado = new Scanner(System.in);
-        System.out.print("Insira o nome: ");
-        String novoNome = teclado.nextLine();
-        System.out.println("Insira o sobrenome: ");
-        String sobrenome = teclado.nextLine();
-        System.out.println("Digite o registro de aluno: ");
-        String registroAluno = teclado.nextLine();
-        System.out.println("Digite a unidade de ensino do aluno: ");
-        String unidade = teclado.nextLine();
-        
-        for (AlunoManager aluno : alunos) {
-            if(aluno.getPrimeiroNome() == primeiroNome){
-                // aluno.setPrimeiroNome(novosDados.getPrimeiroNome());
-                // aluno.setSobrenome(novosDados.getSobrenome());
-                // aluno.setRA(novosDados.getRA());
-                // aluno.setUnidadeDeEnsino(novosDados.getUnidadeDeEnsino());
-                aluno.setPrimeiroNome(novoNome);
-                aluno.setSobrenome(sobrenome);
-                aluno.setRA(registroAluno);
-                aluno.setUnidadeDeEnsino(unidade);
+        for (Aluno aluno : alunos) {
+            if (aluno.getPrimeiroNome().equalsIgnoreCase(nome)) {
+                aluno.setPrimeiroNome(novoPrimeiroNome);
+                aluno.setSobrenome(novoSobrenome);
+                aluno.setRA(novoRA);
+                aluno.setUnidadeDeEnsino(novaUnidade);
+                System.out.println("Aluno atualizado com sucesso!");
                 encontrado = true;
                 break;
             }
         }
 
-        if(!encontrado){
-            System.out.println("Aluno não encontrado");
+        if (!encontrado) {
+            System.out.println("Aluno não encontrado!");
         }
     }
 
-    
+    public void mostrarAlunos() {
+        if (alunos.isEmpty()) {
+            System.out.println("Nenhum aluno cadastrado.");
+        } else {
+            System.out.println("Lista de Alunos:");
+            for (Aluno aluno : alunos) {
+                System.out.println(aluno);
+            }
+        }
+    }
 
+    public void removerAluno(String nome) {
+        Iterator<Aluno> iterator = alunos.iterator();
+        boolean removido = false;
+
+        while (iterator.hasNext()) {
+            Aluno aluno = iterator.next();
+            if (aluno.getPrimeiroNome().equalsIgnoreCase(nome)) {
+                iterator.remove();
+                removido = true;
+                System.out.println("Aluno removido com sucesso!");
+                break;
+            }
+        }
+
+        if (!removido) {
+            System.out.println("Aluno não encontrado!");
+        }
+    }
 }
