@@ -3,6 +3,7 @@ package application;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -14,9 +15,11 @@ public class Main {
 
         imprimirLista();
 
-        removeAluno("Emanuel");
+        editarAluno("Emanuel");
 
         imprimirLista();
+
+        
         
 
 
@@ -44,6 +47,17 @@ public class Main {
                 iterator.remove();
             }
         }
+    }
+
+    public static void editarAluno(String nome){
+        Scanner teclado = new Scanner(System.in);
+        System.out.print("Insira o nome novo: ");
+        String novoNome = teclado.nextLine();
+
+        int index = alunos.indexOf(nome);
+        
+        alunos.set(index, novoNome);
+        
     }
 
 }
