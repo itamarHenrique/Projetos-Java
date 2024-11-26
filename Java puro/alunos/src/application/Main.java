@@ -47,7 +47,7 @@ public class Main {
         teclado.close();
     }
 
-    private static void adicionarAluno(Scanner teclado, AlunoManager alunoManager) {
+    protected static void adicionarAluno(Scanner teclado, AlunoManager alunoManager) {
         System.out.print("Digite o primeiro nome do aluno: ");
         String primeiroNome = teclado.nextLine();
         System.out.print("Digite o sobrenome do aluno: ");
@@ -61,7 +61,7 @@ public class Main {
         alunoManager.adicionaAluno(aluno);
     }
 
-    private static void editarAluno(Scanner teclado, AlunoManager alunoManager) {
+    protected static void editarAluno(Scanner teclado, AlunoManager alunoManager) {
         System.out.print("Digite o nome do aluno que deseja editar: ");
         String nome = teclado.nextLine();
 
@@ -77,7 +77,7 @@ public class Main {
         alunoManager.editarAluno(nome, novoPrimeiroNome, novoSobrenome, novoRA, novaUnidade);
     }
 
-    private static void removerAluno(Scanner teclado, AlunoManager alunoManager) {
+    protected static void removerAluno(Scanner teclado, AlunoManager alunoManager) {
         System.out.print("Digite o nome do aluno que deseja remover: ");
         String nome = teclado.nextLine();
         alunoManager.removerAluno(nome);
